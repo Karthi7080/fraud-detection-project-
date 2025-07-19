@@ -18,7 +18,6 @@ if uploaded_file is not None:
     st.dataframe(data.head())
 
     if st.button("Predict Fraud"):
-
         df = data.copy()
 
         # Scale 'Amount' and 'Time' just like in training
@@ -51,7 +50,7 @@ if uploaded_file is not None:
             st.dataframe(data.head())
 
             fraud_count = sum(y_pred)
-            st.success(f"Total Fraudulent Transactions Detected: {fraud_count}")
+            st.success(f"✅ Total Fraudulent Transactions Detected: {fraud_count}")
 
             # Plot Fraud Distribution
             fig, ax = plt.subplots()
@@ -59,5 +58,6 @@ if uploaded_file is not None:
             plt.title("Fraud (1) vs Legit (0) Transactions")
             st.pyplot(fig)
 
-st.write("Sample Fraudulent Transactions:")
-st.dataframe(data[data['Fraud_Prediction'] == 1].head())
+            # ✅ Show sample fraudulent transactions
+            st.subheader("🚨 Sample Fraudulent Transactions")
+            st.dataframe(data[data['Fraud_Prediction'] == 1].head())
